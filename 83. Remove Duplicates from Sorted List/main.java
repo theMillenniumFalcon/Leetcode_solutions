@@ -20,13 +20,13 @@ public class main {
         }
     }
 
-    public ListNode deleteDuplicates(ListNode node) {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode node = head;
         if (node == null) {
             return node;
         }
-        ListNode head = node;
         while (node.next != null) {
-            if (node.val == node.next.val) {
+             if (node.val == node.next.val) {
                 node.next = node.next.next;
             } else {
                 node = node.next;
