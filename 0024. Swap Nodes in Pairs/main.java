@@ -1,4 +1,4 @@
-public class main {
+  public class main {
     public class ListNode {
         int val;
         ListNode next;
