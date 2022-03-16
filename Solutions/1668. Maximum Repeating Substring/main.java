@@ -4,15 +4,13 @@ public class main {
     }
 
     public int maxRepeating(String sequence, String word) {
-        String s = "";
-        int count = 0;
-        while (s.length() <= sequence.length()) {
-            if (sequence.contains(s)) {
-                count++;
-                s += word;
-            } else
-                break;
+        int k = 0;
+        StringBuilder repeat = new StringBuilder(word);
+
+        while (sequence.contains(repeat)) {
+            k++;
+            repeat.append(word);
         }
-        return count - 1;
+        return k;
     }
 }
