@@ -22,6 +22,7 @@ public class main {
 
     }
 
+    // * RECUSRIVE SOLUTION --> Space complexity = O(No. of calls in recursive call stack)
     public TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);
@@ -34,4 +35,30 @@ public class main {
 
         return root;
     }
-} 
+
+    // * ITERATIVE SOLUTION --> Space Complexity = O(1)
+    public TreeNode insertIntoBST2(TreeNode root, int val) {
+        TreeNode newNode = new TreeNode(val);
+        TreeNode current = root;
+        TreeNode parent = null;
+
+        while (current != null) {
+            parent = current;
+            if (val < current.val) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        if (parent == null) {
+            parent = newNode;
+        } else if (val < parent.val) {
+            parent.left = newNode;
+        } else {
+            parent.right = newNode;
+        }
+
+        return parent;
+    }
+}
