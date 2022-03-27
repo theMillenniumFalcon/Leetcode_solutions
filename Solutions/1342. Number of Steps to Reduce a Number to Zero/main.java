@@ -1,6 +1,6 @@
 public class main {
     public static void main(String[] args) {
-        
+
     }
 
     static int numberOfSteps(int num) {
@@ -8,10 +8,25 @@ public class main {
     }
 
     static int helper(int num, int steps) {
-        if (num == 0) return steps;
+        if (num == 0)
+            return steps;
 
-        if (num % 2 == 0) return helper(num/2, steps+1);
-        
-        return helper(num-1, steps+1);
+        if (num % 2 == 0)
+            return helper(num / 2, steps + 1);
+
+        return helper(num - 1, steps + 1);
     }
+
+    static int numberOfSteps2(int num) {
+        int res = 0;
+        while (num != 0) {
+            if ((num & 1) == 1)
+                num -= 1;
+            else
+                num = num >> 1;
+            res++;
+        }
+        return res;
+    }
+
 }
