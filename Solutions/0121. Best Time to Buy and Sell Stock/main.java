@@ -14,6 +14,7 @@ public class main {
                 max_profit = prices[i] - min_val;
             }
         }
+        
         return max_profit;
     }
 }
