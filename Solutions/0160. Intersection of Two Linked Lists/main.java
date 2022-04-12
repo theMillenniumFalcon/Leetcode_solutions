@@ -15,7 +15,6 @@ public class main {
     }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-
         if (headA == null || headB == null) {
             return null;
         }
@@ -24,7 +23,6 @@ public class main {
         ListNode longer = headB;
 
         while (smaller != longer) {
-
             if (smaller == null) {
                 smaller = headB;
             } else {
@@ -40,5 +38,4 @@ public class main {
 
         return smaller;
     }
-
 }
