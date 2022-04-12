@@ -21,57 +21,43 @@ public class main {
     }
     
     public boolean isPalindrome(ListNode head) {
-        ListNode mid = middleNode(head);
-        ListNode headSecond = reverseList(mid);
-        ListNode reverseHead = headSecond;
-
-        // compare both the halves
-        while (head != null && headSecond != null) {
-            if (head.val != headSecond.val) {
-                break;
-            }
-            head = head.next;
-            headSecond = headSecond.next;
-        }
-        reverseList(reverseHead);
-
-        if (head == null || headSecond == null) {
+        if (head == null || head.next == null) {
             return true;
         }
 
-        return false;
-    }
+        ListNode slow = head;
+        ListNode fast = head;
 
-
-    public ListNode middleNode(ListNode head) {
-        ListNode s = head;
-        ListNode f = head;
-
-        while (f != null && f.next != null) {
-            s = s.next;
-            f = f.next.next;
+        while(fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        return s;
-    }
+        slow.next = reverseList(slow.next);
 
-    public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return head;
-        }
+        slow = slow.next;
 
-        ListNode prev = null;
-        ListNode present = head;
-        ListNode next = present.next;
-
-        while (present != null) {
-            present.next = prev;
-            prev = present;
-            present = next;
-            if (next != null) {
-                next = next.next;
+        while (slow != null) {
+            if (head.val != slow.val) {
+                return false;
             }
+            head = head.next;
+            slow = slow.next;
         }
-        return prev;
+
+        return true;
+    }
+
+    ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        ListNode next = null;
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
     }
 }
