@@ -21,28 +21,26 @@ public class main {
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if (head == null || head.next == null || k <= 0) {
+        if (head == null || head.next == null || k == 0) {
             return head;
         }
 
-        ListNode last = head;
+        ListNode curr =head;
         int length = 1;
-        while (last.next != null) {
-            last = last.next;
+        while (curr.next != null) {
             length++;
+            curr = curr.next;
         }
 
-        last.next = head;
-        int rotations = k % length;
-        int skip = length - rotations;
-        ListNode newLast = head;
-
-        for (int i = 0; i < skip - 1; i++) {
-            newLast = newLast.next;
+        curr.next = head;
+        k = k % length;
+        k = length - k;
+        while (k-- > 0) {
+            curr = curr.next;
         }
 
-        head = newLast.next;
-        newLast.next = null;
+        head = curr.next;
+        curr.next = null;
 
         return head;
     }
