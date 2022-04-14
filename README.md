@@ -1,1 +1,1 @@
-This repo is dedicated to store leetcode solutions to ace the technical interviews.
+This repo is dedicated to store leetcode solutions.
