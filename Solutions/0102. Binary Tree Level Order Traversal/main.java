@@ -1,6 +1,4 @@
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class main {
     public class TreeNode {
