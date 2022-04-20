@@ -25,44 +25,55 @@ public class main {
     }
 
     public List<List<Integer>> verticalTraversal(TreeNode root) {
-        Queue<Pair> queue = new ArrayDeque<>();
-        Map<Integer, List<Integer>> map = new TreeMap<>();
+        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map  = new TreeMap<>();
+        Queue<Tuple> queue = new LinkedList<>();
 
-        queue.add(new Pair(0, root));
+        queue.offer(new Tuple(root, 0, 0));
+
         while (!queue.isEmpty()) {
-            Pair current = queue.poll();
+            Tuple tuple = queue.poll();
+            TreeNode node = tuple.node;
+            int x = tuple.row;
+            int y = tuple.col;
 
-            if (map.containsKey(current.horizontalDistance)) {
-                map.get(current.horizontalDistance).add(current.node.val);
-            } else {
-                List<Integer> temp = new ArrayList<>();
-                temp.add(current.node.val);
-                map.put(current.horizontalDistance, temp);
+            if (!map.containsKey(x)) {
+                map.put(x, new TreeMap<>());
             }
+            if (!map.get(x).containsKey(y)) {
+                map.get(x).put(y, new PriorityQueue<>());
+            }
+            map.get(x).get(y).offer(node.val);
 
-            if (current.node.left != null) {
-                queue.add(new Pair(current.horizontalDistance - 1, current.node.left));
+            if (node.left != null) {
+                queue.offer(new Tuple(node.left, x - 1, y + 1));
             }
-            if (current.node.right != null) {
-                queue.add(new Pair(current.horizontalDistance - 1, current.node.right));
+            if (node.right != null) {
+                queue.offer(new Tuple(node.right, x + 1, y + 1));
             }
         }
 
-        List<List<Integer>> ans = new ArrayList<>();
-        for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
-            ans.add(entry.getValue());
+        List<List<Integer>> res = new ArrayList<>();
+        for (TreeMap<Integer, PriorityQueue<Integer>> ys : map.values()) {
+            res.add(new ArrayList<>());
+            for (PriorityQueue<Integer> nodes : ys.values()) {
+                while (!nodes.isEmpty()) {
+                    res.get(res.size() - 1).add(nodes.poll());
+                }
+            }
         }
 
-        return ans;
+        return res;
     }
 
-    static class Pair {
-        int horizontalDistance;
+    static class Tuple {
         TreeNode node;
+        int row;
+        int col;
 
-        public Pair(int horizontalDistance, TreeNode node) {
+        public Tuple(TreeNode node, int row, int col) {
             this.node = node;
-            this.horizontalDistance = horizontalDistance;
+            this.row = row;
+            this.col = col;
         }
     }
 } 
