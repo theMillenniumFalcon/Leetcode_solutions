@@ -1,4 +1,4 @@
-public void main {
+public class main {
 
     public class TreeNode {
         int val;

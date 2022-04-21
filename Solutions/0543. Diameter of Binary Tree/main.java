@@ -23,16 +23,17 @@ public class main {
     }
 
     public int diameterOfBinaryTree(TreeNode root) {
+        // since in java, we cannot pass reference to variables
         int[] Max = new int[1];
-        diameter(root, Max);
+        height(root, Max);
         return Max[0];
     }
 
-    public int diameter(TreeNode root, int[] Max) {
+    public int height(TreeNode root, int[] Max) {
         if (root == null) return 0;
 
-        int leftHeight = diameter(root.left, Max);
-        int rightHeight = diameter(root.right, Max);
+        int leftHeight = height(root.left, Max);
+        int rightHeight = height(root.right, Max);
         Max[0] = Math.max(Max[0], leftHeight + rightHeight);
     
         return 1 + Math.max(leftHeight, rightHeight);
