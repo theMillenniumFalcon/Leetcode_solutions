@@ -27,9 +27,9 @@ public class main {
     public Node connect(Node root) {
         if (root == null) return null;
         Node curr = root;
-        Node next = root.left;
+        Node nxt = root.left;
 
-        while (curr != null && next != null) {
+        while (curr != null && nxt != null) {
             curr.left.next = curr.right;
             if (curr.next != null) {
                 curr.right.next = curr.next.left;
@@ -37,8 +37,8 @@ public class main {
 
             curr = curr.next;
             if (curr == null) {
-                curr = next;
-                next = curr.left;
+                curr = nxt;
+                nxt = curr.left;
             }
         }
 
