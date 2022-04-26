@@ -26,12 +26,24 @@ public class main {
     }
 
     public Node cloneGraph(Node node) {
-        HashMap<Node, Node> map = new HashMap<>();
-        if (map.containsKey(node)) {
-            return map.get(node);
+        if (node == null)
+            return null;
+        HashMap<Integer, Node> map = new HashMap<>();
+
+        return cloneGraph(node, map);
+    }
+
+    public Node cloneGraph(Node node, Map<Integer, Node> map) {
+        if (map.containsKey(node.val))
+            return map.get(node.val);
+        Node copy = new Node(node.val);
+        map.put(node.val, copy);
+
+        for (Node neighbor : node.neighbors) {
+            copy.neighbors.add(cloneGraph(neighbor, map));
         }
 
-        
+        return copy;
     }
 
 }
