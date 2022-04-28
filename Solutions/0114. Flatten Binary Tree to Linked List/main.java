@@ -24,28 +24,16 @@ public class main {
         
     }
 
+    TreeNode prev = null;
     public void flatten(TreeNode root) {
-        TreeNode current = root;
-        helper(root);
-    }
+        if (root == null) return;
 
-    public void helper(TreeNode root){
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode current = root;
-        
-        while(current != null || !stack.isEmpty()){
-            while(current != null){
-                stack.push(current);  
-                current = current.left;    //traverse to left tree
-            }
-            
-            TreeNode node = stack.pop();
-            TreeNode right = node.right;    //store right tree
-            node.right = node.left;            //store left in right
-            node.left = null;           //mark left with null
-            while(node.right != null) node = node.right;   //since we stored left in right traverse to end
-            node.right = right;         //store previous right value at end
-            current = node.right;           
-        }
+        flatten(root.right);
+        flatten(root.left);
+
+        root.right = prev;
+        root.left = null;
+
+        prev = root;
     }
 }
