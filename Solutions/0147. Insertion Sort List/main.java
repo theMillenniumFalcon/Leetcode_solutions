@@ -20,8 +20,12 @@ public class main {
 
     }
 
+    // TC : O(m*n * log(D)) , D stand min(m, n)
+    // SC: O(m*n)
     public ListNode insertionSortList(ListNode head) {
-        
+        if (head == null || head.next == null) return head;
+
+        ListNode dummyHead = new ListNode(-1);
     }
 
 }
