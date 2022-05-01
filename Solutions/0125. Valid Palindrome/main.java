@@ -3,29 +3,20 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public boolean isPalindrome(String s) {
-        String fixedString = "";
+        StringBuilder str = new StringBuilder();
 
-        for (char c : s.toCharArray()) {
-            if (Character.isDigit(c) || Character.isLetter(c)) {
-                fixedString += c;
+        for (int i = 0; i < s.length(); i++) {
+            if(Character.isLetterOrDigit(s.charAt(i))) {
+                str.append(s.charAt(i));
             }
         }
+            
+        str = new StringBuilder(str.toString().replace(" ", "").toLowerCase());
+        String value = str.toString();
 
-        fixedString = fixedString.toLowerCase();
-
-        int a_pointer = 0;
-        int b_pointer = fixedString.length() - 1;
-
-        while (a_pointer <= b_pointer) {
-            if (fixedString.charAt(a_pointer) != fixedString.charAt(b_pointer)) {
-                return false;
-            }
-
-            a_pointer++;
-            b_pointer--;
-        }
-
-        return true;
+        return value.equals(str.reverse().toString());
     }
 }
