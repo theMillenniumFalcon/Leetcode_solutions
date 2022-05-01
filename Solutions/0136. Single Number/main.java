@@ -3,6 +3,8 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public int singleNumber(int[] nums) {
         int unique = 0;
 
