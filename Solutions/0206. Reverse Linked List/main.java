@@ -21,6 +21,8 @@ public class main {
 
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public ListNode reverseList(ListNode head) {
         if (head == null) {
             return head;
