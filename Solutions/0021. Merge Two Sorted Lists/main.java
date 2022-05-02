@@ -21,6 +21,8 @@ public class main {
 
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode dummy = new ListNode(-1);
         ListNode head = dummy;
@@ -46,6 +48,8 @@ public class main {
     }
 
     // OPTIMIZED --> IN PLACE
+    // TC : O(n)
+    // SC: O(1)
     public ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
         if (list1 == null) return list2;
         if (list2 == null) return list1;
