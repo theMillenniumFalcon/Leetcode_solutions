@@ -3,6 +3,8 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(1)
     static int maxProfit(int[] prices) {
         int min_val = Integer.MAX_VALUE;
         int max_profit = 0;

@@ -14,6 +14,8 @@ public class main {
 
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public boolean hasCycle(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
@@ -25,7 +27,7 @@ public class main {
                 return true;
             }
         }
-        
+
         return false;
     }
 
