@@ -3,6 +3,8 @@ public class main {
         
     }
 
+    // TC : O(logn)
+    // SC: O(1)
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0) return false;
 
