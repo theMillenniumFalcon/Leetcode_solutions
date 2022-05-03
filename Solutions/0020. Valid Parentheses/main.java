@@ -5,6 +5,8 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public boolean isValid(String s) {
         if (s.length() % 2 != 0) return false;
 
