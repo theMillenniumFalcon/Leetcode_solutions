@@ -1,9 +1,13 @@
+import java.util.*;
+
 public class main {
     public static void main(String[] args) {
         
     }
 
-    static int[] productExceptSelf(int[] nums) {
+    // TC : O(n)
+    // SC: O(n)
+    public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
 
         int[] left_product = new int[n];
@@ -27,5 +31,26 @@ public class main {
         }
         return output_array;
     }
-    
+
+    // TC : O(n)
+    // SC: O(1)
+    public int[] productExceptSelf2(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        Arrays.fill(res, 1);
+
+        int prefix = 1;
+        for (int i = 0; i < n; i++) {
+            res[i] = prefix;
+            prefix *= nums[i];
+        }
+
+        int postfix = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            res[i] *= postfix;
+            postfix *= nums[i];
+        }
+
+        return res;
+    }
 }
