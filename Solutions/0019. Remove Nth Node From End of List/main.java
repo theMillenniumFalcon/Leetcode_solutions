@@ -21,8 +21,10 @@ public class main {
 
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode();
+        ListNode dummy = new ListNode(-1);
         dummy.next = head;
 
         ListNode slow = dummy;
