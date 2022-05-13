@@ -22,6 +22,8 @@ public class main {
         
     }
 
+    // TC : O(n), n -> no. of nodes
+    // SC: O(1)
     public int diameterOfBinaryTree(TreeNode root) {
         // since in java, we cannot pass reference to variables
         int[] Max = new int[1];

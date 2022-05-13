@@ -23,6 +23,8 @@ public class main {
     }
 
     // * BRUTEFORCE
+    // TC : O(n^2), n -> no. of nodes
+    // SC: O(1)
     public boolean isBalanced(TreeNode root) {
         if (root == null) return true;
 
@@ -48,6 +50,8 @@ public class main {
     }
 
     // * OPTIMIZED
+    // TC : O(n), n -> no. of nodes
+    // SC: O(1)
     public boolean isBalanced2(TreeNode root) {
         return dfsHeight(root) != -1;
     }
@@ -59,6 +63,7 @@ public class main {
 
         int leftHeight = dfsHeight(root.left);
         int rightHeight = dfsHeight(root.right);
+
         if (leftHeight == -1) return -1;
         if (rightHeight == -1) return -1;
 
