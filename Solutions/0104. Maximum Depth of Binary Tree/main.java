@@ -23,6 +23,8 @@ public class main {
         
     }
 
+    // TC : O(height)
+    // SC: O(1)
     public int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;

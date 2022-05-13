@@ -21,6 +21,8 @@ public class main {
 
     }
 
+    // TC : O(height)
+    // SC: O(1)
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return root;
 
