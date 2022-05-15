@@ -23,6 +23,8 @@ public class main {
         
     }
 
+    // TC : O(n), n -> no. of nodes
+    // SC: O(n), n -> no. of nodes
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) {

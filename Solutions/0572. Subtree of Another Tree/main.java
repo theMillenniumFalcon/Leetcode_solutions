@@ -22,23 +22,25 @@ public class main {
 
     }
 
+    // TC : O(root + subRoot), root -> no. of nodes in root subRoot -> no. of nodes in subRoot, 
+    // SC: O(1)
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
         if (root == null) {
             return false;
-        } else if (isSameTree(root, subRoot)) {
+        } else if (sameTree(root, subRoot)) {
             return true;
         } else {
             return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
         }
     }
 
-    public boolean isSameTree(TreeNode root, TreeNode subRoot) {
+    public boolean sameTree(TreeNode root, TreeNode subRoot) {
         if (root == null || subRoot == null) {
-            return root == null && subRoot == null;
+            return (root == subRoot);
         } else if (root.val == subRoot.val) {
-            return isSameTree(root.left, subRoot.left) && isSameTree(root.right, subRoot.right);
+            return sameTree(root.left, subRoot.left) && sameTree(root.right, subRoot.right);
         } else {
             return false;
         }
     }
-} 
+}
