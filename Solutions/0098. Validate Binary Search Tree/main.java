@@ -22,6 +22,8 @@ public class main {
 
     }
 
+    // TC : O(n), n -> no. of nodes
+    // SC: O(1) 
     public boolean isValidBST(TreeNode root) {
         return isValidBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }

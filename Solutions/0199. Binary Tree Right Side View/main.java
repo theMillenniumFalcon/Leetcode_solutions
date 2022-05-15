@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class main {
 
@@ -26,6 +25,8 @@ public class main {
         
     }
 
+    // TC : O(n), n -> no. of nodes
+    // SC: O(n), n -> no. of nodes
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         if (root == null) {
