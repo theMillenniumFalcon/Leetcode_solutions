@@ -16,15 +16,18 @@ public class main {
     // TC : O(log n), n -> no. of nodes
     // SC: O(1)
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode curr = root;
+        int data1 = p.val;
+        int data2 = q.val;
+        
+        if (root == null) return null;
+        if (root.val == data1 || root.val == data2) return root;
 
-        while (curr != null) {
-            if (p.val > curr.val && q.val > curr.val) {
-                curr = curr.right;
-            } else if (p.val < curr.val && q.val < curr.val) {
-                curr = curr.left;
-            }
-        }
-        return curr;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+        if (left == null) return right;
+        if (right == null) return left;
+
+        return root;
     }
 }
