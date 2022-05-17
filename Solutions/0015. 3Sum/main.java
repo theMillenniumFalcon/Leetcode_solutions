@@ -5,14 +5,9 @@ public class main {
         
     }
 
+    // TC : O(n^2 + nlog n) = O(n^2)
+    // SC: O(1) or O(n), O(n) would be used in sorting
     public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        LinkedList<List<Integer>> res = new LinkedList<List<Integer>>();
-        
-        for (int i = 0; i < nums.length - 2; i++) {
 
-        }
-
-        return res;
     }
 }
