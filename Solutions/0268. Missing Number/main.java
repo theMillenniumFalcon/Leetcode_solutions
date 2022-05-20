@@ -3,7 +3,9 @@ public class main {
         
     }
 
-    static int missingNumber(int[] nums) {
+    // TC : O(n)
+    // SC: O(1)
+    public int missingNumber(int[] nums) {
         int i = 0;
         while (i < nums.length) {
             if (nums[i] < nums.length && nums[i] != nums[nums[i]]) {
@@ -23,7 +25,7 @@ public class main {
         return nums.length;
     }
 
-    static void swap(int[] arr, int first, int second) {
+    public void swap(int[] arr, int first, int second) {
         int temp = arr[first];
         arr[first] = arr[second];
         arr[second] = temp;
