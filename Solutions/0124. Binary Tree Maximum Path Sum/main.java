@@ -22,21 +22,30 @@ public class main {
 
     }
 
+    // TC : O(n)
+    // SC: O(height of tree)
+    int[] res;
     public int maxPathSum(TreeNode root) {
-        int maxValue[] = new int[1];
-        maxValue[0] = Integer.MIN_VALUE;
-        maxPathDown(root, maxValue);
-        
-        return maxValue[0];
+        res = new int[1];
+        res[0] = root.val;
+
+        dfs(root);
+
+        return res[0];
     }
 
-    public int maxPathDown(TreeNode node, int maxValue[]) {
-        if (node == null) return 0;
+    // return max path sum without split
+    public int dfs(TreeNode root) {
+        if (root == null) return 0;
 
-        int left = Math.max(0, maxPathDown(node.left, maxValue));
-        int right = Math.max(0, maxPathDown(node.right, maxValue));
-        
-        maxValue[0] = Math.max(maxValue[0], node.val + left + right);
-        return  node.val + Math.max(left, right);
+        int leftMax = dfs(root.left);
+        int rightMax = dfs(root.right);
+        leftMax = Math.max(leftMax, 0);
+        rightMax = Math.max(rightMax, 0);
+
+        // compute max path sum with split
+        res[0] = Math.max(0, root.val + leftMax + rightMax);
+
+        return root.val + Math.max(leftMax, rightMax);
     }
 }
