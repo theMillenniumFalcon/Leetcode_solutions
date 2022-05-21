@@ -1,17 +1,21 @@
+import java.util.*;
+
 public class main {
     public static void main(String[] args) {
         
     }
-
-    static List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result = new ArrayList();
+    
+    // TC : O(m * n)
+    // SC: O(1)
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> result = new ArrayList<>();
 
         if (matrix.length == 0) return result;
 
         int rowStart = 0;
-        int rowEnd = matrix.length-1;
+        int rowEnd = matrix.length - 1;
         int columnStart = 0;
-        int columnEnd = matrix[0].length-1;
+        int columnEnd = matrix[0].length - 1;
 
         while(rowStart <= rowEnd && columnStart <= columnEnd) {
             for(int i=columnStart; i<=columnEnd; i++) {
@@ -38,9 +42,8 @@ public class main {
             }
             columnStart++;
         }
+
         return result;
-
-
     }
     
 }
