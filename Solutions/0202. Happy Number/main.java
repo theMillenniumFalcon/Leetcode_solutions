@@ -1,30 +1,39 @@
+import java.util.*;
+
 public class main {
     public static void main(String[] args) {
         
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public boolean isHappy(int n) {
-        int slow = n;
-        int fast = n;
+        HashSet<Integer> visited =  new HashSet<>();
+        
+        while (n != 1) {
+            int current = n;
+            int sum = sumOfSquares(current);
+            if (visited.contains(sum)) {
+                return false;
+            }
 
-        do {
-            slow = findSquare(slow);
-            fast = findSquare(findSquare(fast));
-        } while (fast != slow);
-
-        if (slow == 1) {
-            return true;
+            visited.add(sum);
+            n = sum;
         }
-        return false;
+
+        return true;
     }
 
-    private int findSquare(int number) {
-        int ans = 0;
-        while (number > 0) {
-            int rem = number % 10;
-            ans += rem * rem;
-            number /= 10;
+    public int sumOfSquares(int n) {
+        int res = 0;
+
+        while (n != 0) {
+            int digit = n % 10;
+            digit *= digit;
+            res += digit;
+            n = n / 10;
         }
-        return ans;
+
+        return res;
     }
 }
