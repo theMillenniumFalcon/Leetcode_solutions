@@ -3,6 +3,8 @@ public class main {
 
     }
 
+    // TC : O(log n)
+    // SC: O(1)
     public double myPow(double x, int n) {
         double ans = 1.0;
         long duplicate = n;
