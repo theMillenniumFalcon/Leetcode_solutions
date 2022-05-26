@@ -1,42 +1,35 @@
-import java.util.Arrays;
-
 public class main {
     public static void main(String[] args) {
-        
+
     }
 
-    // TC : O(log (Max(piles)) * len(piles))
+    // TC : O(n logn)
     // SC: O(1)
     public int minEatingSpeed(int[] piles, int h) {
-        int minSpeed = Integer.MAX_VALUE;
-        int start = 1;
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < piles.length - 1; i ++) {
-            if (piles[i] > max) {
-                max = piles[i];
+        long low = 1;
+        long high = piles[0];
+        for (int pile : piles) {
+            high = Math.max(high, pile);
+        }
+        while (low < high) {
+            long mid = low + (high - low) / 2;
+            if (!isPossibleToEatAll(piles, h, mid)) {
+                low = mid + 1;
+            } else {
+                high = mid;
             }
         }
-        int end = max;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            int hours = count(piles, mid);
-
-            if (hours >= h) {
-                minSpeed = Math.min(minSpeed, mid);
-                start = mid + 1;
-            }
-            else {
-                end = mid - 1;
-            }
-        }
-        return minSpeed;
+        return (int) low;
     }
 
-    public int count(int[] arr, int num) {
-        int res = 0;
-        for (int i = 0; i < arr.length; i++) {
-            res += (arr[i] / num) + (arr[i] % num == 0 ? 0 : 1);
+    public boolean isPossibleToEatAll(int[] piles, int hours, long currK) {
+        long count = 0;
+        for (long pile : piles) {
+            count += pile / currK;
+            if (pile % currK != 0) {
+                count++;
+            }
         }
-        return res;
+        return (count <= hours);
     }
 }
