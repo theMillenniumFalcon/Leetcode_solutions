@@ -9,6 +9,7 @@ public class main {
     // SC: O(1)
     public List<String> generateParenthesis(int n) {
         List<String> output_arr = new ArrayList<>();
+        
         backtrack(output_arr, "", 0, 0, n);
 
         return output_arr;
