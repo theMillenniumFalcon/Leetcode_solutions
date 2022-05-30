@@ -23,29 +23,26 @@ public class main {
     }
 
     // TC : O(n)
-    // SC: O(height of tree)
-    int[] res;
+    // SC: O(n), required for the recursive stack, in case of a skewed tree, it can be O(n)
     public int maxPathSum(TreeNode root) {
-        res = new int[1];
-        res[0] = root.val;
+        // taken an array as cannot take a variable and pass it as a reference in java
+        int[] max_value = new int[1];
+        max_value[0] = Integer.MIN_VALUE;
+        helper(root, max_value);
 
-        dfs(root);
-
-        return res[0];
+        return max_value[0];
     }
 
-    // return max path sum without split
-    public int dfs(TreeNode root) {
-        if (root == null) return 0;
+    public int helper(TreeNode node, int[] max_value) {
+        if (node == null) {
+            return 0;
+        }
 
-        int leftMax = dfs(root.left);
-        int rightMax = dfs(root.right);
-        leftMax = Math.max(leftMax, 0);
-        rightMax = Math.max(rightMax, 0);
+        int left = Math.max(0, helper(node.left, max_value));
+        int right = Math.max(0, helper(node.right, max_value));
 
-        // compute max path sum with split
-        res[0] = Math.max(0, root.val + leftMax + rightMax);
+        max_value[0] = Math.max(max_value[0], left + right + node.val);
 
-        return root.val + Math.max(leftMax, rightMax);
+        return Math.max(left, right) + node.val;
     }
 }
