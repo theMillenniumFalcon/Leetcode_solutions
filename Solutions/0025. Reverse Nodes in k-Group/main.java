@@ -20,6 +20,8 @@ public class main {
 
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || k == 1) {
             return head;
@@ -37,7 +39,7 @@ public class main {
             curr = curr.next;
             count++;
         }
-        while (count >= k) {
+        while(count >= k) {
             curr = pre.next;
             next = curr.next;
             for (int i = 1; i < k; i++) {
