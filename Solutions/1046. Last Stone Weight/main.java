@@ -5,20 +5,23 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public int lastStoneWeight(int[] stones) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
         for (int stone : stones) {
-            queue.add(stone);
+            maxHeap.add(stone);
         }
-        while (queue.size() > 1) {
-            int stone1 = queue.poll();
-            int stone2 = queue.poll();
+        
+        while (maxHeap.size() > 1) {
+            int stone1 = maxHeap.poll();
+            int stone2 = maxHeap.poll();
             if (stone1 > stone2) {
-                queue.add(stone1 - stone2);
+                maxHeap.add(stone1 - stone2);
             }
         }
 
-        return queue.isEmpty() ? 0 : queue.peek();
+        return maxHeap.isEmpty() ? 0 : maxHeap.peek();
     }
 }

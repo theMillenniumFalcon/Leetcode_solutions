@@ -8,7 +8,7 @@ class KthLargest {
     // TC : O(n log n)
     public KthLargest(int k, int[] nums) {
         this.k = k;
-        minHeap = new PriorityQueue<>((a , b) -> a - b);
+        minHeap = new PriorityQueue<>();
 
         for (int num : nums) {
             minHeap.add(num);
