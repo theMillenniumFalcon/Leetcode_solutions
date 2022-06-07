@@ -5,29 +5,32 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public int[][] merge(int[][] intervals) {
-        List<int[]> res = new ArrayList<>();
-
-        if (intervals.length == 0 || intervals == null) {
-            return res.toArray(new int[0][]);
+        if (intervals.length <= 1) {
+            return intervals;
         }
 
-        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        Arrays.sort(intervals, (arr1, arr2) -> Integer.compare(arr1[0], arr2[0]));
 
-        int start = intervals[0][0];
-        int end  = intervals[0][1];
+        List<int[]> res = new ArrayList<>();
+        int[] current_interval = intervals[0];
+        res.add(current_interval);
 
         for (int[] i : intervals) {
-            if (i[0] <= end) {
-                end = Math.max(end, i[1]);
+            int current_end = current_interval[1];
+            int next_begin = i[0];
+            int next_end = i[1];
+
+            if (current_end >= next_begin) {
+                current_interval[1] = Math.max(current_end, next_end);
             } else {
-                res.add(new int[]{start, end});
-                start = i[0];
-                end = i[1];
+                current_interval = i;
+                res.add(current_interval);
             }
         }
-        res.add(new int[]{start, end});
 
-        return res.toArray(new int[0][]);
+        return res.toArray(new int[res.size()][2]);
     }
 }
