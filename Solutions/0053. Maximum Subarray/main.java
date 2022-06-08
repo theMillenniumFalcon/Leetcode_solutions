@@ -3,6 +3,8 @@ public class main {
         
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public int maxSubArray(int[] nums) {
         int max_sum = nums[0];
         int current_max_sum = max_sum;
