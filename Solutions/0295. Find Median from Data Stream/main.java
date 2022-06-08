@@ -5,6 +5,8 @@ public class main {
         
     }
     
+    // TC : O(n)
+    // SC: O(n)
     public class MedianFinder {
         PriorityQueue<Integer> maxHeap;
         PriorityQueue<Integer> minHeap;
