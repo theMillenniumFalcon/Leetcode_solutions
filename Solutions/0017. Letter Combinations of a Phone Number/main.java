@@ -1,24 +1,35 @@
-import java.util.List;
-import java.util.LinkedList;
+import java.util.*;
 
 public class main {
     public static void main(String[] args) {
         
     }
 
-    static List<String> letterCombinations(String digits) {
-        LinkedList<String> output = new LinkedList<>();
-        if (digits.length() == 0) return output;
-        output.add("");
+    // TC : O(n)
+    // SC: O(1)
+    public List<String> letterCombinations(String digits) {
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0) {
+            return res;
+        }
 
-        String[] char_map = new String[] { "0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        String[] mapping = { "0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
 
-        for (int i = 0; i < digits.length(); i++) {
-            int index = Character.getNumericValue(digits.charAt(i));
+        helper(res, digits, "", 0, mapping);
 
-            while (output.peek().length() == i) {
-                String permutation = output.remove();
-            }
+        return res;
+    }
+
+    public void helper(List<String> res, String digits, String current, int index, String[] mapping) {
+        if (index == digits.length()) {
+            res.add(current);
+            return;
+        }
+
+        String letters = mapping[digits.charAt(index) - '0'];
+
+        for (int i = 0; i < letters.length(); i++) {
+            helper(res, digits, current + letters.charAt(i), index + 1, mapping);
         }
     }
 }
