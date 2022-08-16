@@ -1,4 +1,4 @@
-  public class main {
+public class main {
     public class ListNode {
         int val;
         ListNode next;
@@ -20,6 +20,8 @@
 
     }
 
+    // TC : O(n)
+    // SC: O(1)
     public ListNode swapPairs(ListNode head) {
         ListNode temp = new ListNode(0);
         temp.next = head;
