@@ -1,4 +1,3 @@
-import java.security.DrbgParameters.Capability;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,15 +55,23 @@ class MyHashSet2 {
         }
 
         if (set[hashIndex].indexOf(key) == -1) {
-
+            set[hashIndex].add(key);
         }
     }
 
     public void remove(int key) {
-
+        if (contains(key)) {
+            int hashIndex = getKeyHash(key);
+            set[hashIndex].remove(set[hashIndex].indexOf(key));
+        }
     }
 
     public boolean contains(int key) {
-        return set[key];
+        int hashIndex = getKeyHash(key);
+        if (set[hashIndex] == null || set[hashIndex].indexOf(key) == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
