@@ -2,7 +2,7 @@ import java.util.*;
 
 public class main {
     public static void main(String[] args) {
-        
+
     }
 
     // TC : O(n^2 + nlog n) = O(n^2)
