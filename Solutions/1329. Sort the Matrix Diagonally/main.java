@@ -5,7 +5,7 @@ public class main {
 
     }
 
-    // TC : O(m*n * log(D)) , D stand min(m, n)
+    // TC : O(m*n * log(D)) , D -> min(m, n)
     // SC: O(m*n)
     public int[][] diagonalSort(int[][] mat) {
         int m = mat.length;
@@ -16,18 +16,18 @@ public class main {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 int diagonalKey = i - j;
-                PriorityQueue<Integer> pq = map.getOrDefault(diagonalKey, new PriorityQueue<>());
-                pq.offer(mat[i][j]);
-                map.put(diagonalKey, pq);
+                PriorityQueue<Integer> queue = map.getOrDefault(diagonalKey, new PriorityQueue<>());
+                queue.offer(mat[i][j]);
+                map.put(diagonalKey, queue);
             }
         }
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 int diagonalKey = i - j;
-                PriorityQueue<Integer> pq = map.get(diagonalKey);
+                PriorityQueue<Integer> queue = map.get(diagonalKey);
 
-                mat[i][j] = pq.poll();
+                mat[i][j] = queue.poll();
             }
         }
 
