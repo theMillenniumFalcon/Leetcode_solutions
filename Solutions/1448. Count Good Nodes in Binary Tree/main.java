@@ -23,23 +23,24 @@ public class main {
     }
 
     // TC : O(n)
-    // SC: O(log n)
+    // SC: O(log n) -> auxiliary space
     int count = 0;
+
     public int goodNodes(TreeNode root) {
-        goodNodesUtil(root, Integer.MIN_VALUE);
+        helper(root, Integer.MIN_VALUE);
         return count;
     }
-    
-    private void goodNodesUtil(TreeNode root, int max){
-        if(root == null)
+
+    private void helper(TreeNode root, int max) {
+        if (root == null)
             return;
-        if(root.val >= max){
+        if (root.val >= max) {
             count++;
             max = root.val;
         }
-        
-        goodNodesUtil(root.left, max);
-        goodNodesUtil(root.right, max);
+
+        helper(root.left, max);
+        helper(root.right, max);
         return;
     }
 }
