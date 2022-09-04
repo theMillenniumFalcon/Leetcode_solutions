@@ -24,8 +24,10 @@ public class main {
 
     }
 
+    // TC: O(n*log(n))
+    // SC: O(n)
     public List<List<Integer>> verticalTraversal(TreeNode root) {
-        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map  = new TreeMap<>();
+        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
         Queue<Tuple> queue = new LinkedList<>();
 
         queue.offer(new Tuple(root, 0, 0));
@@ -33,8 +35,8 @@ public class main {
         while (!queue.isEmpty()) {
             Tuple tuple = queue.poll();
             TreeNode node = tuple.node;
-            int x = tuple.row;
-            int y = tuple.col;
+            int x = tuple.level;
+            int y = tuple.vertical;
 
             if (!map.containsKey(x)) {
                 map.put(x, new TreeMap<>());
@@ -67,13 +69,13 @@ public class main {
 
     static class Tuple {
         TreeNode node;
-        int row;
-        int col;
+        int level;
+        int vertical;
 
-        public Tuple(TreeNode node, int row, int col) {
+        public Tuple(TreeNode node, int level, int vertical) {
             this.node = node;
-            this.row = row;
-            this.col = col;
+            this.level = level;
+            this.vertical = vertical;
         }
     }
-} 
+}
