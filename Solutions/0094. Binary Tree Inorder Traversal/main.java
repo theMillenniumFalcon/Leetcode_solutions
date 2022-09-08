@@ -20,20 +20,25 @@ public class main {
             this.right = right;
         }
     }
+
     public static void main(String[] args) {
 
     }
 
+    // TC: O(n)
+    // SC: O(log(n)) -> auxiliary space
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
 
-        if (root == null) return ans;
-        ans.addAll(inorderTraversal(root.left));
-        if (root != null) {
-            ans.add(root.val);
+        if (root == null) {
+            return res;
         }
-        ans.addAll(inorderTraversal(root.right));
+        res.addAll(inorderTraversal(root.left));
+        if (root != null) {
+            res.add(root.val);
+        }
+        res.addAll(inorderTraversal(root.right));
 
-        return ans;
+        return res;
     }
-} 
+}
