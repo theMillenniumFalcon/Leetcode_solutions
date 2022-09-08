@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class main {
     public class TreeNode {
@@ -40,5 +41,29 @@ public class main {
         res.addAll(inorderTraversal(root.right));
 
         return res;
+    }
+
+    // TC: O(n)
+    // SC: O(n)
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+
+        TreeNode current = root;
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.pop();
+            ans.add(current.val);
+            current = current.right;
+        }
+
+        return ans;
     }
 }
