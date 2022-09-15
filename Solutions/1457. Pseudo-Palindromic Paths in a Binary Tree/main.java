@@ -25,7 +25,7 @@ public class main {
     }
 
     // TC: O(n), n -> number of nodes
-    // SC: O(n + log(n)), n -> for HasSet, log(n) -> auxiliary space
+    // SC: O(n + log(n)), n -> for HashSet, log(n) -> auxiliary space
 
     int res = 0;
 
