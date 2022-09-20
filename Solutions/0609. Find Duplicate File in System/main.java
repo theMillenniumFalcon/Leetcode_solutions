@@ -8,8 +8,8 @@ public class main {
 
     }
 
-    // TC: O(n), n -> leength of paths
-    // SC: O(k), k -> diffferent types of content
+    // TC: O(n), n -> length of paths
+    // SC: O(k), k -> different types of content
     public List<List<String>> findDuplicate(String[] paths) {
         // <Content, List<FilePaths>>
         Map<String, List<String>> map = new HashMap<>();
