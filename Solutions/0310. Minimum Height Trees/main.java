@@ -12,8 +12,8 @@ public class main {
 
     }
 
-    // TC: O(n)
-    // SC: O(n)
+    // TC: O(n), n -> number of edges
+    // SC: O(n), n -> number of edges
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         ArrayList<Integer> res = new ArrayList<>();
 
