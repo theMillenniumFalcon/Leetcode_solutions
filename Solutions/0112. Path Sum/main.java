@@ -22,6 +22,8 @@ public class main {
 
     }
 
+    // TC: O(n), n -> number of nodes
+    // SC: O(log(n)) -> auxiliary space, n -> number of nodes
     public boolean hasPathSum(TreeNode root, int targetSum) {
         if (root == null) {
             return false;
@@ -31,4 +33,4 @@ public class main {
             return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
         }
     }
-}  
+}
