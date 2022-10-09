@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class main {
     public class TreeNode {
@@ -24,23 +27,55 @@ public class main {
 
     }
 
+    // TC: O(n), n -> number of nodes in tree
+    // SC: O(n), n -> number of nodes in tree
     public boolean findTarget(TreeNode root, int k) {
-        HashSet<Integer> set = new HashSet<>();
-        boolean ans = helper(root, k, set);
-        
-        return ans;
+        List<Integer> nums = new ArrayList<>();
+        inorder(root, nums);
+
+        int left = 0;
+        int right = nums.size() - 1;
+
+        while (left < right) {
+            if (nums.get(left) + nums.get(right) == k)
+                return true;
+            if (nums.get(left) + nums.get(right) < k)
+                left++;
+            else
+                right--;
+        }
+
+        return false;
     }
 
-    public boolean helper(TreeNode root, int sum, HashSet<Integer> set) {
-        if (root == null) return false;
+    public void inorder(TreeNode root, List<Integer> nums) {
+        if (root == null)
+            return;
+        inorder(root.left, nums);
+        nums.add(root.val);
+        inorder(root.right, nums);
+    }
 
-        if (helper(root.left, sum, set) == true) return true;
+    // TC: O(n), n -> number of nodes in tree
+    // SC: O(n), n -> number of nodes in tree
+    public boolean findTarget2(TreeNode root, int k) {
+        Set<Integer> set = new HashSet<>();
 
-        int compliment = sum - root.val;
-        if (set.contains(compliment)) return true;
+        return preorder(root, set, k);
+    }
+
+    public boolean preorder(TreeNode root, Set<Integer> set, int k) {
+        if (root == null)
+            return false;
+
+        int compliment = k - root.val;
+
+        if (set.contains(compliment)) {
+            return true;
+        }
 
         set.add(root.val);
 
-        return helper(root.right, sum, set);
+        return preorder(root.left, set, k) || preorder(root.right, set, k);
     }
 }
