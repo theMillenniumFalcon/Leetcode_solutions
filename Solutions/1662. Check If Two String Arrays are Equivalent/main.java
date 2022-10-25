@@ -1,9 +1,11 @@
 public class main {
     public static void main(String[] args) {
-        
+
     }
 
     // * BRUTEFORCE
+    // TC: O(word1 + word2)
+    // SC: O(word1 + word2)
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
         String s1 = makeString(word1);
         String s2 = makeString(word2);
@@ -22,6 +24,8 @@ public class main {
     }
 
     // * OPTIMIZED
+    // TC: O(max(word1, word2))
+    // SC: O(1)
     public boolean arrayStringsAreEqual2(String[] word1, String[] word2) {
         int arrIndex1 = 0, arrIndex2 = 0;
         int index1 = 0, index2 = 0;
