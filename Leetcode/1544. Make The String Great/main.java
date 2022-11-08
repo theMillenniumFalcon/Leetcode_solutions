@@ -27,7 +27,7 @@ public class main {
     public String makeGood2(String s) {
         for (int i = 0; i < s.length() - 1; i++) {
             if (s.charAt(i) + 32 == s.charAt(i + 1) || s.charAt(i) == s.charAt(i + 1) + 32) {
-                return makeGood(s.substring(0, i) + s.substring(i + 2));
+                return makeGood2(s.substring(0, i) + s.substring(i + 2));
             }
         }
 
