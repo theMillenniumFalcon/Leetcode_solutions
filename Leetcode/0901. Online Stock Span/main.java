@@ -2,8 +2,6 @@ import java.util.Stack;
 
 class StockSpanner {
 
-    // TC : O(n)
-    // SC: O(n)
     class Pair {
         int price;
         int index;
@@ -20,6 +18,8 @@ class StockSpanner {
         stack.push(base);
     }
 
+    // TC : O(n)
+    // SC: O(n)
     public int next(int price) {
         Pair pair = new Pair();
         pair.price = price;
