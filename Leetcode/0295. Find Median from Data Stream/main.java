@@ -2,29 +2,29 @@ import java.util.*;
 
 public class main {
     public static void main(String[] args) {
-        
+
     }
-    
-    // TC : O(n)
-    // SC: O(n)
+
+    // TC : O(n), n -> size of heap
+    // SC: O(n), n -> size of heap
     public class MedianFinder {
         PriorityQueue<Integer> maxHeap;
         PriorityQueue<Integer> minHeap;
-    
+
         public MedianFinder() {
             maxHeap = new PriorityQueue<>(Collections.reverseOrder());
             minHeap = new PriorityQueue<>();
         }
-    
+
         public void addNum(int num) {
             minHeap.add(num);
             maxHeap.add(minHeap.poll());
-    
+
             if (maxHeap.size() > minHeap.size()) {
                 minHeap.add(maxHeap.poll());
             }
         }
-    
+
         public double findMedian() {
             if (minHeap.size() > maxHeap.size()) {
                 return (double) minHeap.peek();
@@ -34,4 +34,3 @@ public class main {
         }
     }
 }
-
