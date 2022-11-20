@@ -2,9 +2,11 @@ import java.util.Stack;
 
 public class main {
     public static void main(String[] args) {
-        
+
     }
 
+    // TC: O(n), n -> length of string
+    // SC: O(n), n -> length of string
     public int calculate(String s) {
         int len = s.length();
         int sign = 1;
@@ -18,7 +20,7 @@ public class main {
                 currentNum = s.charAt(i) - '0';
                 while (i + 1 < len && Character.isDigit(s.charAt(i + 1))) {
                     currentNum = currentNum * 10 + s.charAt(i + 1) - '0';
-                    i++; 
+                    i++;
                 }
                 currentNum = currentNum * sign;
                 ans += currentNum;
@@ -39,7 +41,7 @@ public class main {
                 int prevSign = stack.pop();
                 ans = prevSign * ans;
                 int prevAns = stack.pop();
-                ans = ans + prevAns; 
+                ans = ans + prevAns;
             }
         }
 
