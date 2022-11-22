@@ -1,8 +1,10 @@
 public class main {
     public static void main(String[] args) {
-        
+
     }
 
+    // TC: O(n)
+    // SC: O(n)
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
         dp[0] = 0;
