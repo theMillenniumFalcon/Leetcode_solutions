@@ -1,1 +1,1 @@
-This repo is dedicated to store leetcode solutions.
+This repo is dedicated to store leetcode solutions
